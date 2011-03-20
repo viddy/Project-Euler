@@ -19,7 +19,7 @@ int main()
 {
   for (int candidate = sqrt(600851475143); candidate > 1; --candidate)
   {
-    if (600851475143 % candidate == 0 && isPrime(candidate))
+    if (600851475143 % candidate == 0 && Prime::isPrime(candidate))
     {
       cout << candidate << endl;
       break;
