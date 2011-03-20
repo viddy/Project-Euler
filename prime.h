@@ -3,21 +3,50 @@
 // This file contains general purpose prime number functions.
 
 #include <math.h>
+#include <vector>
 
-bool isPrime(int num)
+using namespace std;
+
+class Prime
 {
-  if (num % 2 == 0 || num % 3 == 0)
-    return false;
+  public:
 
-  int num_sqrt = sqrt(num);
-  for (int k = 30; k <= num_sqrt; k += 30)
+  static bool isPrime(int num)
   {
-    if (num % (k + 1) == 0  || num % (k + 7) == 0  || num % (k + 11) == 0 ||
-        num % (k + 13) == 0 || num % (k + 17) == 0 || num % (k + 19) == 0 ||
-        num % (k + 23) == 0 || num % (k + 29) == 0)
+    if (num == 2 || num == 3)
+      return true;
+
+    if (num % 2 == 0 || num % 3 == 0)
       return false;
+
+    int num_sqrt = sqrt(num) + 1;
+    for (int k = 6; k <= num_sqrt; k += 6)
+    {
+      if (num % (k - 1) == 0 || num % (k + 1) == 0)
+        return false;
+    }
+
+    return true;
   }
 
-  return true;
-}
+  static vector<bool> getPrimeSieve(int upper_limit)
+  {
+    vector<bool> sieve(upper_limit, 1);
 
+    sieve[0] = 0;
+    sieve[1] = 0;
+
+    for (int i = 2; i <= sqrt(upper_limit); ++i)
+    {
+      if (sieve[i])
+      {
+        for (int j = i; j <= upper_limit / i ; ++j)
+        {
+          sieve[i * j] = 0;
+        }
+      }
+    }
+
+    return sieve;
+  }
+};
