@@ -33,7 +33,7 @@
 
 #include <iostream>
 
-#include "prime.h"
+#include "euler.h"
 
 using namespace std;
 
@@ -43,7 +43,7 @@ int main()
   // Only working with 100 prime numbers isn't going to give us an accurate
   // number of divisors for triangle numbers with prime factors > 100, but it
   // gives us enough primes to find the answer.
-  vector<bool> prime_sieve = Prime::getPrimeSieve(100);
+  vector<bool> prime_sieve = Euler::getPrimeSieve(100);
   
   for (int i = 1; ; ++i)
   {

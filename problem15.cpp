@@ -29,7 +29,7 @@ int main()
     grid[i][20] = grid[20][i] = 1;
 
   for (int row = 19; row >= 0; --row)
-    for (int col = row; col >= 0; --col)
+    for (int col = 19; col >= 0; --col)
       grid[row][col] = grid[row + 1][col] + grid[row][col + 1];
 
   cout << grid[0][0] << endl;

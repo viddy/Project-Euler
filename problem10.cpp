@@ -10,13 +10,13 @@
 
 #include <iostream>
 
-#include "prime.h"
+#include "euler.h"
 
 using namespace std;
 
 int main()
 {
-  vector<bool> sieve = Prime::getPrimeSieve(2000000);
+  vector<bool> sieve = Euler::getPrimeSieve(2000000);
 
   long long sum = 0;
 

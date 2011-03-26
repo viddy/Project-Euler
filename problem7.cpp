@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-#include "prime.h"
+#include "euler.h"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ int main()
 
   for (int i = 2; ; ++i)
   {
-    if (Prime::isPrime(i))
+    if (Euler::isPrime(i))
     {
       if (++prime_count == 10001)
       {

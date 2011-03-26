@@ -1,13 +1,13 @@
 // Project Euler (http://projecteuler.net/)
 //
-// This file contains general purpose prime number functions.
+// This file contains general purpose functions.
 
 #include <math.h>
 #include <vector>
 
 using namespace std;
 
-class Prime
+class Euler
 {
   public:
 
@@ -48,5 +48,28 @@ class Prime
     }
 
     return sieve;
+  }
+
+  static unsigned getDivisorSum(unsigned num)
+  {
+    // Returns the sum of num's divisors. For example, an input of
+    // 12 would return 1 + 2 + 3 + 4 + 6 + 12 = 28
+
+    if (num < 2)
+      return num;
+
+    unsigned div_sum = 1 + num;
+    unsigned num_sqrt = sqrt(num);
+
+    // When we find a divisor, we know num/div is also a divisor
+    for (unsigned div = 2; div <= num_sqrt; ++div)
+      if (num % div == 0)
+        div_sum += div + num/div;
+
+    // If num was a perfect square, we would've added its square root twice
+    if (num_sqrt * num_sqrt == num)
+      div_sum -= num_sqrt;
+
+    return div_sum;
   }
 };
